@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="1 create table forum_post" author="Zhanglu">
+        <sql>
+            CREATE TABLE user(
+            `id` int(11) UNSIGNED AUTO_INCREMENT,
+            `account` varchar(20) NOT NULL DEFAULT '' ,
+            `password` varchar(30) NOT NULL DEFAULT '',
+            `nick_name` varchar(50) NOT NULL DEFAULT '' ,
+            `email` varchar(50) NOT NULL DEFAULT '' ,
+            `gender` int(1) NOT NULL DEFAULT 1 ,
+            `age` int(3) NOT NULL DEFAULT 18 ,
+            `id_card` varchar(18) NOT NULL DEFAULT '' ,
+            `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            PRIMARY KEY(`id`)
+            )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+        </sql>
+    </changeSet>
+
+    <changeSet id="2 alter table user alter column account" author="ZYN">
+        <sql>
+            alter table user change column account username varchar(30);
+        </sql>
+    </changeSet>
+</databaseChangeLog>

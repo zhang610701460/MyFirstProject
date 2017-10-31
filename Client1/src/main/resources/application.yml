@@ -1,0 +1,33 @@
+server.port: 48081
+#日志级别
+logging:
+  config: classpath:log4j2.xml
+  level:
+    com: info
+    com.zyn.java: info
+#指定eureka服务器
+eureka:
+  client.serviceUrl.defaultZone: http://127.0.0.1:8761/eureka/
+  instance.prefer-ip-address: true
+spring:
+  #注册eureka服务名称
+  application.name: Client1
+  profiles.active: dev
+hystrix:
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 10000
+    threadpool:
+        default:
+            coreSize: 50
+
+feign:
+    hystrix:
+        enable: true
+    httpclient:
+        enable: false
+    okhttp:
+        enable: true

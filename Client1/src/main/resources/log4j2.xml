@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="DEBUG" monitorInterval="30">
+    <properties>
+        <property name="ConsoleProper">%highlight{%d{yyyy-MM-dd HH:mm:ss.SSS} %t %-5level %logger{1.} %L --- %msg%n}{%throwable{short.fileName}}{FATAL=white,ERROR=red,
+            WARN=blue, INFO=black, DEBUG=green, TRACE=blue}
+        </property>
+    </properties>
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${ConsoleProper}"/>
+        </Console>
+    </appenders>
+    <loggers>
+        <Logger name="com.zyn.java.demo1" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <root level="INFO">
+            <appender-ref ref="Console"/>
+        </root>
+    </loggers>
+</configuration>
